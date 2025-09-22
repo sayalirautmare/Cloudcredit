@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Task Manager</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background: #f4f6f9; }
-    h1 { text-align: center; }
-    .task-input { display: flex; justify-content: center; margin-bottom: 20px; }
-    input { padding: 10px; width: 300px; border: 1px solid #ccc; border-radius: 5px; }
-    button { padding: 10px 15px; margin-left: 5px; border: none; border-radius: 5px; background: #28a745; color: white; cursor: pointer; }
-    ul { list-style: none; padding: 0; }
-    li { background: white; padding: 10px; margin: 5px 0; display: flex; justify-content: space-between; border-radius: 5px; }
-    .delete { background: #dc3545; padding: 5px 10px; border-radius: 5px; cursor: pointer; color: white; }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Task Manager</h1>
-  <div class="task-input">
-    <input type="text" id="taskInput" placeholder="Enter a new task" />
-    <button onclick="addTask()">Add</button>
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="appendValue('%')">%</button>
+      <button onclick="backspace()">←</button>
+      <button class="operator" onclick="appendValue('/')">÷</button>
+
+      <button onclick="appendValue('7')">7</button>
+      <button onclick="appendValue('8')">8</button>
+      <button onclick="appendValue('9')">9</button>
+      <button class="operator" onclick="appendValue('*')">×</button>
+
+      <button onclick="appendValue('4')">4</button>
+      <button onclick="appendValue('5')">5</button>
+      <button onclick="appendValue('6')">6</button>
+      <button class="operator" onclick="appendValue('-')">−</button>
+
+      <button onclick="appendValue('1')">1</button>
+      <button onclick="appendValue('2')">2</button>
+      <button onclick="appendValue('3')">3</button>
+      <button class="operator" onclick="appendValue('+')">+</button>
+
+      <button onclick="appendValue('0')">0</button>
+      <button onclick="appendValue('.')">.</button>
+      <button class="equal" onclick="calculate()">=</button>
+    </div>
   </div>
-  <ul id="taskList"></ul>
-
-  <script>
-    function addTask() {
-      const taskInput = document.getElementById("taskInput");
-      const taskText = taskInput.value.trim();
-      if (taskText === "") return;
-
-      const li = document.createElement("li");
-      li.innerHTML = `${taskText} <span class="delete" onclick="this.parentElement.remove()">X</span>`;
-      document.getElementById("taskList").appendChild(li);
-      taskInput.value = "";
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
